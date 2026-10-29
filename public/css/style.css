@@ -1,0 +1,319 @@
+/* ==========================================================================
+   AQUENZA — YOUR BRAND. OUR BOTTLE.
+   Core Design System & Global Styles
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Core Color Palette */
+  --navy-dark: #07172C;
+  --navy-deep: #0A2540;
+  --navy-medium: #113861;
+  --blue-brand: #0052CC;
+  --blue-vivid: #0284C7;
+  --cyan-accent: #00B4D8;
+  --cyan-light: #E0F7FC;
+  --cyan-subtle: #F0FAFC;
+  --water-bg: #F8FBFE;
+  
+  /* Neutral Palette */
+  --white: #FFFFFF;
+  --gray-50: #F8FAFC;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-300: #CBD5E1;
+  --gray-500: #64748B;
+  --gray-700: #334155;
+  --gray-900: #0F172A;
+
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Glassmorphism & Elevation */
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.7);
+  --glass-shadow: 0 12px 36px -4px rgba(10, 37, 64, 0.08), 0 4px 12px -2px rgba(0, 180, 216, 0.05);
+  --shadow-sm: 0 2px 6px rgba(10, 37, 64, 0.04);
+  --shadow-md: 0 8px 24px rgba(10, 37, 64, 0.07);
+  --shadow-lg: 0 16px 40px rgba(10, 37, 64, 0.12);
+  --shadow-glow: 0 0 24px rgba(0, 180, 216, 0.35);
+
+  /* Transitions & Spacing */
+  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --container-max: 1200px;
+}
+
+/* CSS Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--water-bg);
+  color: var(--gray-900);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--navy-dark);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 { font-size: clamp(2.2rem, 4vw + 1rem, 3.6rem); }
+h2 { font-size: clamp(1.8rem, 2.8vw + 0.5rem, 2.6rem); }
+h3 { font-size: clamp(1.3rem, 1.8vw + 0.3rem, 1.75rem); }
+h4 { font-size: 1.2rem; }
+
+p {
+  color: var(--gray-700);
+  font-size: 1rem;
+}
+
+a {
+  color: var(--blue-brand);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--cyan-accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.section-alt {
+  background-color: var(--white);
+}
+
+.section-navy {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-deep) 100%);
+  color: var(--white);
+}
+
+.section-navy h2, 
+.section-navy h3, 
+.section-navy h4 {
+  color: var(--white);
+}
+
+.section-navy p {
+  color: var(--gray-300);
+}
+
+/* Section Header Component */
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--cyan-light);
+  color: var(--blue-brand);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.85rem;
+}
+
+.section-navy .section-tag {
+  background: rgba(0, 180, 216, 0.15);
+  color: var(--cyan-accent);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+}
+
+.section-title {
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray-500);
+}
+
+/* Brand Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.85rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue-brand) 0%, var(--blue-vivid) 100%);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0045ab 0%, #0274b0 100%);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 82, 204, 0.4);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--navy-deep);
+  border-color: var(--gray-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  border-color: var(--blue-brand);
+  color: var(--blue-brand);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.btn-cyan {
+  background: var(--cyan-accent);
+  color: var(--navy-dark);
+  font-weight: 700;
+}
+
+.btn-cyan:hover {
+  background: #0099b8;
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Water Wave Divider */
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  position: relative;
+}
+
+.wave-divider svg {
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+/* Responsive Grid System */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .grid-3, .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  .section {
+    padding: 3.5rem 0;
+  }
+}

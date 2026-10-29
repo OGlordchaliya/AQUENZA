@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Grand Heritage Restaurant & Banquets | Digital Table Menu (DEMO)</title>
+  <meta name="description" content="AQUENZA Customer Venue QR Demo: Digital menu, venue info, and guest feedback powered by AQUENZA 1 Litre custom bottles.">
+  <link rel="icon" type="image/png" href="/assets/clean/aquenza_logo_clean.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    .venue-demo-wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: var(--white);
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .demo-ribbon {
+      background: #D97706;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 0.4rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .venue-header {
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+      color: var(--white);
+      padding: 2.25rem 1.5rem 1.75rem;
+      text-align: center;
+      position: relative;
+    }
+    .venue-logo-badge {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius-md);
+      background: #FFFFFF;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.85rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .venue-title {
+      color: var(--white);
+      font-size: 1.45rem;
+      margin-bottom: 0.25rem;
+    }
+    .venue-sub {
+      color: #94A3B8;
+      font-size: 0.88rem;
+      margin-bottom: 0.75rem;
+    }
+    .venue-quick-meta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: #CBD5E1;
+    }
+    .venue-main {
+      padding: 1.5rem;
+      flex-grow: 1;
+    }
+    .menu-filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+      scrollbar-width: none;
+    }
+    .menu-filter-bar::-webkit-scrollbar { display: none; }
+    .menu-filter-btn {
+      padding: 0.4rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--gray-300);
+      background: var(--white);
+      color: var(--gray-700);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .menu-filter-btn.active {
+      background: var(--navy-dark);
+      color: var(--white);
+      border-color: var(--navy-dark);
+    }
+    .menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+    .menu-card-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-md);
+    }
+    .menu-item-info h5 {
+      font-size: 0.96rem;
+      margin-bottom: 0.15rem;
+      color: var(--navy-dark);
+    }
+    .menu-item-info p {
+      font-size: 0.78rem;
+      color: var(--gray-500);
+    }
+    .menu-price {
+      font-weight: 700;
+      color: var(--blue-brand);
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+    .feedback-box {
+      background: var(--cyan-subtle);
+      border: 1px solid rgba(0, 180, 216, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    .star-rating {
+      display: flex;
+      gap: 0.35rem;
+      font-size: 1.5rem;
+      margin: 0.5rem 0 1rem;
+      cursor: pointer;
+    }
+    .star-rating-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #F59E0B;
+      cursor: pointer;
+    }
+    .powered-by-aquenza {
+      background: var(--navy-dark);
+      color: var(--white);
+      padding: 1.25rem;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body style="background: #E2E8F0;">
+
+  <div class="venue-demo-wrap">
+    <!-- Demonstration Sample Banner -->
+    <div class="demo-ribbon">
+      DEMONSTRATION SAMPLE — Custom 1 Litre Bottle QR Destination
+    </div>
+
+    <!-- Venue Header -->
+    <header class="venue-header">
+      <div class="venue-logo-badge">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0052CC" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+      </div>
+      <h1 class="venue-title">The Grand Heritage Restaurant</h1>
+      <div class="venue-sub">Fine Dining & Luxury Banquet Hall • Civil Lines, Bijnor</div>
+      <div class="venue-quick-meta">
+        <span>Open Today: 11:00 AM – 11:00 PM</span>
+        <span>•</span>
+        <span>Table 14</span>
+      </div>
+      <div style="margin-top: 1rem;">
+        <a href="https://maps.google.com/?q=Bijnor,Uttar+Pradesh" target="_blank" rel="noopener" class="btn btn-outline btn-sm" style="font-size: 0.8rem; padding: 0.35rem 0.8rem;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          Get Directions in Bijnor
+        </a>
+      </div>
+    </header>
+
+    <!-- Venue Main -->
+    <main class="venue-main">
+      <!-- Special Offer Banner -->
+      <div style="background: #FEF3C7; border: 1px solid #FCD34D; border-radius: var(--radius-md); padding: 0.85rem 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        <div>
+          <div style="font-size: 0.85rem; font-weight: 700; color: #92400E;">Chef's Weekend Special</div>
+          <div style="font-size: 0.78rem; color: #78350F;">Complimentary mocktail with every main course order today!</div>
+        </div>
+      </div>
+
+      <!-- Digital Menu -->
+      <h4 style="margin-bottom: 0.75rem; color: var(--navy-dark);">Digital Table Menu</h4>
+      
+      <!-- Category Filter -->
+      <div class="menu-filter-bar">
+        <button class="menu-filter-btn active" data-category="all">All Items</button>
+        <button class="menu-filter-btn" data-category="starters">Starters</button>
+        <button class="menu-filter-btn" data-category="mains">Main Course</button>
+        <button class="menu-filter-btn" data-category="beverages">Beverages</button>
+        <button class="menu-filter-btn" data-category="desserts">Desserts</button>
+      </div>
+
+      <div class="menu-list" id="venueMenuList">
+        <!-- Item 1 -->
+        <div class="menu-card-item" data-category="starters">
+          <div class="menu-item-info">
+            <h5>Paneer Tikka Angara</h5>
+            <p>Cottage cheese marinated in clay oven spices</p>
+          </div>
+          <div class="menu-price">&#8377; 280</div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="menu-card-item" data-category="starters">
+          <div class="menu-item-info">
+            <h5>Crispy Corn Bhel</h5>
+            <p>Sweet corn tossed with fresh herbs & lemon</p>
+          </div>
+          <div class="menu-price">&#8377; 190</div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="menu-card-item" data-category="mains">
+          <div class="menu-item-info">
+            <h5>Dal Makhani Royal</h5>
+            <p>Slow cooked black lentils with cream & butter</p>
+          </div>
+          <div class="menu-price">&#8377; 320</div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="menu-card-item" data-category="mains">
+          <div class="menu-item-info">
+            <h5>Shahi Paneer Lazeez</h5>
+            <p>Rich cashew gravy with aromatic saffron</p>
+          </div>
+          <div class="menu-price">&#8377; 340</div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="menu-card-item" data-category="beverages">
+          <div class="menu-item-info">
+            <h5>Blue Lagoon Mocktail</h5>
+            <p>Refreshing citrus with blue curacao & mint</p>
+          </div>
+          <div class="menu-price">&#8377; 150</div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="menu-card-item" data-category="desserts">
+          <div class="menu-item-info">
+            <h5>Gulab Jamun with Rabri</h5>
+            <p>Warm khoya dumplings with chilled rabri</p>
+          </div>
+          <div class="menu-price">&#8377; 160</div>
+        </div>
+      </div>
+
+      <!-- Feedback Facility -->
+      <div class="feedback-box">
+        <h4 style="margin-bottom: 0.25rem; color: var(--navy-dark);">Rate Your Dining Experience</h4>
+        <p style="font-size: 0.82rem; color: var(--gray-700);">Help us serve you better. Your feedback goes directly to venue management.</p>
+        
+        <div class="star-rating" id="starRating">
+          <button class="star-rating-btn" type="button">&#9733;</button>
+          <button class="star-rating-btn" type="button">&#9733;</button>
+          <button class="star-rating-btn" type="button">&#9733;</button>
+          <button class="star-rating-btn" type="button">&#9733;</button>
+          <button class="star-rating-btn" type="button">&#9733;</button>
+        </div>
+
+        <form id="venueFeedbackForm">
+          <div style="margin-bottom: 0.75rem;">
+            <input type="text" id="feedbackGuestName" class="form-input" placeholder="Your Name (Optional)" style="font-size: 0.88rem; padding: 0.6rem 0.85rem;">
+          </div>
+          <div style="margin-bottom: 0.75rem;">
+            <textarea id="feedbackComments" class="form-textarea" rows="2" placeholder="Tell us what you enjoyed or how we can improve..." style="font-size: 0.88rem; padding: 0.6rem 0.85rem;"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;">Submit Feedback</button>
+        </form>
+
+        <div id="feedbackSuccessAlert" style="display: none; background: #DCFCE7; border: 1px solid #86EFAC; border-radius: var(--radius-sm); padding: 0.85rem; margin-top: 0.75rem;"></div>
+      </div>
+    </main>
+
+    <!-- Powered by AQUENZA Footer -->
+    <footer class="powered-by-aquenza">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+        <span>Bottled Water Experience Powered by</span>
+        <strong style="color: var(--cyan-accent);">AQUENZA</strong>
+      </div>
+      <div style="font-size: 0.75rem; color: #94A3B8;">
+        YOUR BRAND. OUR BOTTLE. • Bijnor, Uttar Pradesh
+      </div>
+      <div style="margin-top: 0.75rem;">
+        <a href="/" style="color: var(--cyan-accent); font-size: 0.78rem; text-decoration: underline;">
+          Want Custom Branded Bottles For Your Venue? Learn More &rarr;
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/js/qr-demo.js"></script>
+</body>
+</html>

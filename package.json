@@ -1,0 +1,21 @@
+{
+  "name": "aquenza-website",
+  "version": "1.0.0",
+  "description": "Official business website for AQUENZA — Packaged-water supply and custom-branding coordination service.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "aquenza",
+    "packaged-water",
+    "custom-branding",
+    "bijnor",
+    "water-bottle-branding",
+    "qr-solutions"
+  ],
+  "author": "AQUENZA Team",
+  "license": "UNLICENSED",
+  "private": true
+}
