@@ -13,6 +13,7 @@ Thumbs.db
 # Temporary and build output
 dist/
 build/
+scratch/
 raw_pptx/
 raw_zip/
 *.log

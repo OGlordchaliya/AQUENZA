@@ -1,0 +1,328 @@
+{
+  "admin_users": [
+    {
+      "id": "admin-1",
+      "email": "admin@aquenza.in",
+      "password_hash": "$2b$10$2PnJuxS1do2fZPPUt.U1k.59SkpxJaGIMHb6qqR.9gGBjwgVwiTUS",
+      "role": "superadmin",
+      "created_at": "2026-10-30T19:48:37.307Z",
+      "last_login": "2026-10-30T20:23:35.756Z"
+    }
+  ],
+  "venues": [
+    {
+      "id": "venue-royal-bistro",
+      "slug": "the-royal-bistro",
+      "name": "The Royal Heritage Bistro",
+      "tagline": "Fine Dining, Banquets & Artisanal Cuisine",
+      "category": "Restaurant & Banquet",
+      "logo_url": "/assets/clean/aquenza_logo_clean.png",
+      "location": "Civil Lines, Near Circuit House, Bijnor, UP 246701",
+      "map_url": "https://maps.google.com/?q=Bijnor+Uttar+Pradesh",
+      "phone": "+91 86300 71125",
+      "email": "contact@royalheritagebistro.com",
+      "opening_hours": "11:00 AM – 11:00 PM (All 7 Days)",
+      "announcement": "Complimentary dessert on dining table reservations above ₹1500 this weekend!",
+      "status": "active",
+      "qr_code_url": "/api/qr/venue/the-royal-bistro.png",
+      "created_at": "2026-10-30T19:48:37.198Z",
+      "updated_at": "2026-10-30T19:48:37.207Z"
+    }
+  ],
+  "menu_categories": [
+    {
+      "id": "cat-1",
+      "venue_id": "venue-royal-bistro",
+      "name": "Artisanal Starters",
+      "display_order": 1
+    },
+    {
+      "id": "cat-2",
+      "venue_id": "venue-royal-bistro",
+      "name": "Chef Special Main Course",
+      "display_order": 2
+    },
+    {
+      "id": "cat-3",
+      "venue_id": "venue-royal-bistro",
+      "name": "Refreshing Beverages",
+      "display_order": 3
+    },
+    {
+      "id": "cat-4",
+      "venue_id": "venue-royal-bistro",
+      "name": "Gourmet Desserts",
+      "display_order": 4
+    }
+  ],
+  "menu_items": [
+    {
+      "id": "item-1",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-1",
+      "name": "Paneer Malai Tikka",
+      "description": "Fresh cottage cheese marinated in cardamom cream & grilled in clay oven",
+      "price": 295,
+      "is_vegetarian": true,
+      "is_available": true
+    },
+    {
+      "id": "item-2",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-1",
+      "name": "Crispy Corn & Water Chestnut Salt & Pepper",
+      "description": "Wok tossed sweet corn kernels with crushed peppercorns and spring scallions",
+      "price": 260,
+      "is_vegetarian": true,
+      "is_available": true
+    },
+    {
+      "id": "item-3",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-1",
+      "name": "Dahi Ke Kebab",
+      "description": "Hung yogurt patties blended with mild spices & shallow fried to golden perfection",
+      "price": 275,
+      "is_vegetarian": true,
+      "is_available": true
+    },
+    {
+      "id": "item-4",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-2",
+      "name": "Dal Makhani Royal Heritage",
+      "description": "Slow cooked black lentils simmered for 24 hours with churned butter & cream",
+      "price": 340,
+      "is_vegetarian": true,
+      "is_available": true
+    },
+    {
+      "id": "item-5",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-2",
+      "name": "Paneer Lababdar",
+      "description": "Cottage cheese chunks cooked in rich tomato-onion-cashew gravy with coriander",
+      "price": 380,
+      "is_vegetarian": true,
+      "is_available": true
+    },
+    {
+      "id": "item-6",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-2",
+      "name": "Subz Dum Biryani Handi",
+      "description": "Aromatic basmati rice layered with garden vegetables and saffron milk, served with burani raita",
+      "price": 360,
+      "is_vegetarian": true,
+      "is_available": true
+    },
+    {
+      "id": "item-7",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-3",
+      "name": "AQUENZA Pure Alkaline Water (1 Litre)",
+      "description": "Chilled custom-bottled drinking water served at table in eco-sealed glass format",
+      "price": 50,
+      "is_vegetarian": true,
+      "is_available": true
+    },
+    {
+      "id": "item-8",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-3",
+      "name": "Kaffir Lime & Mint Virgin Mojito",
+      "description": "Fresh garden mint, crushed lime wedges, cane sugar syrup and sparkling soda",
+      "price": 180,
+      "is_vegetarian": true,
+      "is_available": true
+    },
+    {
+      "id": "item-9",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-3",
+      "name": "Royal Kesaria Thandai",
+      "description": "Traditional crushed dry fruit milk infused with Kashmiri saffron strands and rose petals",
+      "price": 210,
+      "is_vegetarian": true,
+      "is_available": true
+    },
+    {
+      "id": "item-10",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-4",
+      "name": "Gulab Jamun with Saffron Rabri",
+      "description": "Warm khoya dumplings soaked in fragrant cardamom sugar syrup over chilled rabri",
+      "price": 190,
+      "is_vegetarian": true,
+      "is_available": true
+    },
+    {
+      "id": "item-11",
+      "venue_id": "venue-royal-bistro",
+      "category_id": "cat-4",
+      "name": "Sizzling Brownie with Vanilla Bean Scoop",
+      "description": "Fudgy Belgian chocolate walnut brownie topped with hot fudge syrup",
+      "price": 240,
+      "is_vegetarian": true,
+      "is_available": true
+    }
+  ],
+  "feedback_reviews": [
+    {
+      "id": "rev-ojb20qv",
+      "venue_id": "venue-royal-bistro",
+      "guest_name": "QA Inspector",
+      "rating": 5,
+      "comments": "Water served chilled in custom 1L bottle. Flawless scan!",
+      "status": "pending",
+      "created_at": "2026-10-30T20:22:49.867Z"
+    },
+    {
+      "id": "rev-xx9vvs0",
+      "venue_id": "venue-royal-bistro",
+      "guest_name": "QA Inspector",
+      "rating": 5,
+      "comments": "Water served chilled in custom 1L bottle. Flawless scan!",
+      "status": "pending",
+      "created_at": "2026-10-30T20:08:17.693Z"
+    },
+    {
+      "id": "rev-twtg4hh",
+      "venue_id": "venue-royal-bistro",
+      "guest_name": "QA Inspector",
+      "rating": 5,
+      "comments": "Water served chilled in custom 1L bottle. Flawless scan!",
+      "status": "pending",
+      "created_at": "2026-10-30T19:51:20.083Z"
+    },
+    {
+      "id": "rev-7wh2zg4",
+      "venue_id": "venue-royal-bistro",
+      "guest_name": "QA Inspector",
+      "rating": 5,
+      "comments": "Water served chilled in custom 1L bottle. Flawless scan!",
+      "status": "pending",
+      "created_at": "2026-10-30T19:49:42.190Z"
+    },
+    {
+      "id": "rev-1",
+      "venue_id": "venue-royal-bistro",
+      "guest_name": "Dr. Alok Verma",
+      "rating": 5,
+      "comments": "Exceptional dining atmosphere! The custom-branded AQUENZA water bottles on the tables gave the restaurant a very high-end 5-star touch. Food quality was pristine.",
+      "status": "approved",
+      "created_at": "2026-10-28T19:48:37.207Z"
+    },
+    {
+      "id": "rev-2",
+      "venue_id": "venue-royal-bistro",
+      "guest_name": "Pooja Chauhan",
+      "rating": 5,
+      "comments": "Loved scanning the bottle QR code right from our table to check the dessert menu and specials. Very smooth digital experience!",
+      "status": "approved",
+      "created_at": "2026-10-25T19:48:37.207Z"
+    },
+    {
+      "id": "rev-3",
+      "venue_id": "venue-royal-bistro",
+      "guest_name": "Rohit Agrawal",
+      "rating": 4,
+      "comments": "Paneer Malai Tikka and Dal Makhani were superb. Fast service and courteous staff.",
+      "status": "approved",
+      "created_at": "2026-10-23T19:48:37.207Z"
+    },
+    {
+      "id": "rev-9xrr8wa",
+      "venue_id": "venue-royal-bistro",
+      "guest_name": "QA Inspector",
+      "rating": 5,
+      "comments": "Water served chilled in custom 1L bottle. Flawless scan!",
+      "status": "pending",
+      "created_at": "2026-10-30T20:23:35.763Z"
+    }
+  ],
+  "enquiries": [
+    {
+      "id": "enq-lhj5i3b",
+      "reference_id": "AQZ-447067",
+      "name": "Verification Officer",
+      "phone": "9876543210",
+      "email": "test@example.com",
+      "bottle_size": "250 ml AQUENZA Bottle",
+      "quantity": "500 Units",
+      "custom_branding": "No",
+      "qr_required": "Yes",
+      "message": "Automated test suite verification enquiry",
+      "status": "new",
+      "email_dispatched": false,
+      "created_at": "2026-10-30T20:22:49.865Z"
+    },
+    {
+      "id": "enq-ukbx4aj",
+      "reference_id": "AQZ-684936",
+      "name": "Verification Officer",
+      "phone": "9876543210",
+      "email": "test@example.com",
+      "bottle_size": "250 ml AQUENZA Bottle",
+      "quantity": "500 Units",
+      "custom_branding": "No",
+      "qr_required": "Yes",
+      "message": "Automated test suite verification enquiry",
+      "status": "new",
+      "email_dispatched": false,
+      "created_at": "2026-10-30T20:08:17.690Z"
+    },
+    {
+      "id": "enq-8066wr6",
+      "reference_id": "AQZ-465232",
+      "name": "Verification Officer",
+      "phone": "9876543210",
+      "email": "test@example.com",
+      "bottle_size": "250 ml AQUENZA Bottle",
+      "quantity": "500 Units",
+      "custom_branding": "No",
+      "qr_required": "Yes",
+      "message": "Automated test suite verification enquiry",
+      "status": "new",
+      "email_dispatched": false,
+      "created_at": "2026-10-30T19:51:20.080Z"
+    },
+    {
+      "id": "enq-u0enpcl",
+      "reference_id": "AQZ-213788",
+      "name": "Verification Officer",
+      "phone": "9876543210",
+      "email": "test@example.com",
+      "bottle_size": "250 ml AQUENZA Bottle",
+      "quantity": "500 Units",
+      "custom_branding": "No",
+      "qr_required": "Yes",
+      "message": "Automated test suite verification enquiry",
+      "status": "new",
+      "email_dispatched": false,
+      "created_at": "2026-10-30T19:49:42.187Z"
+    },
+    {
+      "id": "enq-8kd790f",
+      "reference_id": "AQZ-156571",
+      "name": "Verification Officer",
+      "phone": "9876543210",
+      "email": "test@example.com",
+      "bottle_size": "250 ml AQUENZA Bottle",
+      "quantity": "500 Units",
+      "custom_branding": "No",
+      "qr_required": "Yes",
+      "message": "Automated test suite verification enquiry",
+      "status": "new",
+      "email_dispatched": false,
+      "created_at": "2026-10-30T20:23:35.761Z"
+    }
+  ],
+  "settings": {
+    "site_name": "AQUENZA",
+    "public_site_url": "https://aquenza.onrender.com",
+    "primary_phone": "8630071125",
+    "secondary_phone": "8755306639",
+    "contact_email": "aquenza.service@gmail.com"
+  }
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" width="320" height="260" fill="none">
+  <!-- Central 'A' Emblem -->
+  <g transform="translate(110, 15)">
+    <path d="M 50 8 L 14 96 L 33 96 L 42 72 L 58 72 L 67 96 L 86 96 Z" fill="#003366"/>
+    <polygon points="50,26 38,62 62,62" fill="#FFFFFF"/>
+    <!-- Teardrop Water Droplet inside apex -->
+    <path d="M 50 32 C 46 38 43 43 43 47 C 43 51 46.2 54 50 54 C 53.8 54 57 51 57 47 C 57 43 54 38 50 32 Z" fill="#00B4D8"/>
+    <!-- Flowing Ocean Wave across crossbar -->
+    <path d="M 6 68 C 24 60 38 72 54 66 C 68 60 80 66 94 60 C 86 68 70 76 52 70 C 34 65 22 74 6 68 Z" fill="#00B4D8"/>
+    <path d="M 12 70 C 26 64 40 72 54 68 C 64 64 78 68 88 62 C 78 69 66 73 52 71 C 36 68 24 75 12 70 Z" fill="#0077B6" opacity="0.6"/>
+  </g>
+  <!-- Wordmark 'AQUENZA' -->
+  <text x="160" y="162" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', system-ui, sans-serif" font-size="44" font-weight="800" letter-spacing="3.5" fill="#002B49">
+    AQUENZA
+  </text>
+  <!-- Aqua Wave Accent under 'UEN' -->
+  <path d="M 115 170 C 145 166 175 174 205 168 C 185 173 155 173 115 170 Z" fill="#00B4D8"/>
+  <!-- Tagline with Dashes -->
+  <text x="160" y="200" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="4" fill="#64748B">
+    — YOUR BRAND. OUR BOTTLE. —
+  </text>
+</svg>

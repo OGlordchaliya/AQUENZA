@@ -19,7 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainNav = document.getElementById('mainNav');
 
   if (mobileBtn && mainNav) {
-    mobileBtn.addEventListener('click', () => {
+    function closeMobileNav() {
+      mainNav.classList.remove('open');
+      mobileBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       mainNav.classList.toggle('open');
       const isOpen = mainNav.classList.contains('open');
       mobileBtn.setAttribute('aria-expanded', isOpen);
@@ -27,10 +33,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close menu when clicking navigation link
     mainNav.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mainNav.classList.remove('open');
-        mobileBtn.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeMobileNav);
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (mainNav.classList.contains('open') && !mainNav.contains(e.target) && !mobileBtn.contains(e.target)) {
+        closeMobileNav();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mainNav.classList.contains('open')) {
+        closeMobileNav();
+      }
+    });
+
+    // Reset when resizing to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1024 && mainNav.classList.contains('open')) {
+        closeMobileNav();
+      }
     });
   }
 

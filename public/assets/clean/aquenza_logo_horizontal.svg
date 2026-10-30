@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80" width="420" height="80" fill="none">
+  <!-- AQUENZA Iconic 'A' Emblem -->
+  <g transform="translate(10, 8)">
+    <!-- Base 'A' geometry in Royal Navy -->
+    <path d="M 32 4 L 8 64 L 22 64 L 28 48 L 38 48 L 44 64 L 58 64 Z" fill="#003366"/>
+    <!-- Triangular inner counter -->
+    <polygon points="32,18 24,40 40,40" fill="#FFFFFF"/>
+    <!-- Teardrop Water Droplet inside apex -->
+    <path d="M 32 20 C 29 25 27 29 27 32 C 27 35 29.2 37 32 37 C 34.8 37 37 35 37 32 C 37 29 35 25 32 20 Z" fill="#00B4D8"/>
+    <!-- Flowing Ocean Wave across crossbar -->
+    <path d="M 2 44 C 14 38 24 46 35 42 C 45 38 53 42 63 38 C 57 44 45 50 34 46 C 22 42 14 48 2 44 Z" fill="#00B4D8"/>
+    <path d="M 6 46 C 16 41 26 47 36 44 C 42 42 51 44 59 40 C 51 45 43 48 34 47 C 22 45 14 50 6 46 Z" fill="#0077B6" opacity="0.6"/>
+  </g>
+  <!-- Wordmark 'AQUENZA' in Deep Navy -->
+  <text x="88" y="45" font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', system-ui, sans-serif" font-size="36" font-weight="800" letter-spacing="2.5" fill="#002B49">
+    AQUENZA
+  </text>
+  <!-- Wave flourish accent under wordmark -->
+  <path d="M 160 52 C 185 49 205 56 235 51 C 220 55 195 55 160 52 Z" fill="#00B4D8"/>
+  <!-- Tagline -->
+  <text x="90" y="66" font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', system-ui, sans-serif" font-size="10.5" font-weight="700" letter-spacing="3.2" fill="#64748B">
+    YOUR BRAND. OUR BOTTLE.
+  </text>
+</svg>

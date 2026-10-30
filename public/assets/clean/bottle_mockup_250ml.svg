@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" width="600" height="1000" fill="none">
+  <defs>
+    <!-- Studio Background Gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="85%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </radialGradient>
+    
+    <!-- Bottle Glass Cylindrical Gradient -->
+    <linearGradient id="glassBody250" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.7)"/>
+      <stop offset="12%" stop-color="rgba(235,248,255,0.3)"/>
+      <stop offset="35%" stop-color="rgba(255,255,255,0.85)"/>
+      <stop offset="65%" stop-color="rgba(240,249,255,0.2)"/>
+      <stop offset="88%" stop-color="rgba(220,240,255,0.4)"/>
+      <stop offset="100%" stop-color="rgba(200,225,245,0.8)"/>
+    </linearGradient>
+
+    <!-- Cap Gradient -->
+    <linearGradient id="capGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="20%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#F8FAFC"/>
+      <stop offset="90%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="bottleShadow" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="0" dy="25" stdDeviation="20" flood-color="rgba(15, 23, 42, 0.12)"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="1000" fill="url(#bgGrad)"/>
+
+  <!-- Ground Contact Shadow -->
+  <ellipse cx="300" cy="880" rx="130" ry="16" fill="rgba(15, 23, 42, 0.08)"/>
+  <ellipse cx="300" cy="876" rx="90" ry="8" fill="rgba(15, 23, 42, 0.14)"/>
+
+  <!-- Bottle Group -->
+  <g filter="url(#bottleShadow)">
+    <!-- 250ml Cylindrical Bottle Body (Shorter, balanced proportions) -->
+    <!-- Dimensions: x=190, y=280, w=220, h=590, rx=24 -->
+    <rect x="190" y="280" width="220" height="590" rx="24" fill="url(#glassBody250)" stroke="rgba(180,210,235,0.8)" stroke-width="2.5"/>
+
+    <!-- Subtle Water Level Highlight -->
+    <rect x="194" y="310" width="212" height="550" rx="18" fill="rgba(240, 249, 255, 0.25)"/>
+
+    <!-- Glass Left Reflection Bar -->
+    <rect x="204" y="295" width="18" height="555" rx="8" fill="rgba(255,255,255,0.7)"/>
+    <!-- Glass Secondary Specular Stripe -->
+    <rect x="230" y="300" width="6" height="540" rx="3" fill="rgba(255,255,255,0.4)"/>
+    <!-- Glass Right Edge Glow -->
+    <rect x="388" y="295" width="14" height="555" rx="6" fill="rgba(255,255,255,0.3)"/>
+
+    <!-- Base Dimple & Rim -->
+    <path d="M 270 866 Q 300 854 330 866" stroke="rgba(148, 163, 184, 0.6)" stroke-width="3" fill="none"/>
+    <ellipse cx="300" cy="864" rx="20" ry="4" fill="rgba(148, 163, 184, 0.3)"/>
+
+    <!-- Bottle Neck -->
+    <rect x="210" y="250" width="180" height="35" rx="6" fill="url(#glassBody250)" stroke="rgba(180,210,235,0.8)" stroke-width="1.5"/>
+
+    <!-- Sleek White Cylindrical Cap -->
+    <rect x="205" y="160" width="190" height="96" rx="12" fill="url(#capGrad)" stroke="#CBD5E1" stroke-width="1.5"/>
+    <!-- Cap Top highlight -->
+    <ellipse cx="300" cy="164" rx="88" ry="6" fill="#FFFFFF" opacity="0.8"/>
+    <!-- Cap Knurling/Seam subtle indicator -->
+    <line x1="205" y1="242" x2="395" y2="242" stroke="#94A3B8" stroke-width="1.5"/>
+
+    <!-- ================= LABEL ARTWORK ================= -->
+    <!-- Label Background (Transparent Clear Film with subtle edge) -->
+    <rect x="192" y="360" width="216" height="460" fill="none"/>
+
+    <!-- AQUENZA Monogram 'A' -->
+    <g transform="translate(262, 380)">
+      <path d="M 38 6 L 10 74 L 26 74 L 33 55 L 43 55 L 50 74 L 66 74 Z" fill="#003B73"/>
+      <polygon points="38,20 28,47 48,47" fill="#FFFFFF"/>
+      <!-- Teardrop Water Droplet in Apex -->
+      <path d="M 38 24 C 34 30 31 35 31 39 C 31 43 34.2 46 38 46 C 41.8 46 45 43 45 39 C 45 35 42 30 38 24 Z" fill="#00B4D8"/>
+      <!-- Flowing Ocean Wave across crossbar -->
+      <path d="M 4 52 C 16 45 28 55 42 50 C 54 45 64 50 74 46 C 68 53 54 60 40 55 C 26 51 16 57 4 52 Z" fill="#00B4D8"/>
+      <path d="M 8 54 C 20 48 32 56 42 53 C 48 50 58 53 68 49 C 58 55 50 58 40 56 C 26 54 18 60 8 54 Z" fill="#0077B6" opacity="0.7"/>
+    </g>
+
+    <!-- Wordmark 'AQUENZA' -->
+    <text x="300" y="488" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="34" font-weight="800" letter-spacing="3" fill="#002B49">
+      AQUENZA
+    </text>
+
+    <!-- Tagline -->
+    <text x="300" y="512" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="9" font-weight="700" letter-spacing="2.8" fill="#475569">
+      — YOUR BRAND. OUR BOTTLE. —
+    </text>
+
+    <!-- Water Droplet Accent -->
+    <path d="M 300 555 C 297 560 295 564 295 567 C 295 570 297.2 572 300 572 C 302.8 572 305 570 305 567 C 305 564 303 560 300 555 Z" fill="#00B4D8"/>
+
+    <!-- Standard Water Type (NO PREMIUM for 250ml) -->
+    <text x="300" y="592" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="3" fill="#003366">
+      DRINKING WATER
+    </text>
+
+    <!-- Lower Flowing Ocean Waves -->
+    <g transform="translate(192, 700)">
+      <!-- Wave Layer 1 (Dark Royal Blue) -->
+      <path d="M 0 50 C 40 70 80 40 120 65 C 160 90 190 60 216 75 L 216 110 L 0 110 Z" fill="#003B73"/>
+      <!-- Wave Layer 2 (Cyan Gradient) -->
+      <path d="M 0 35 C 50 15 90 60 140 30 C 180 5 200 40 216 25 L 216 65 C 190 50 160 80 120 55 C 80 30 40 60 0 40 Z" fill="#00B4D8"/>
+      <!-- Wave Crest Highlight -->
+      <path d="M 0 33 C 45 14 85 58 135 28 C 175 4 195 38 216 23" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none"/>
+    </g>
+
+    <!-- Volume Designation -->
+    <text x="300" y="828" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="15" font-weight="600" letter-spacing="3" fill="#475569">
+      — 250 ml —
+    </text>
+  </g>
+
+  <!-- Clean Format Badge -->
+  <g transform="translate(50, 60)">
+    <rect width="130" height="34" rx="17" fill="#003366"/>
+    <text x="65" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="1">
+      250 ml BANQUET
+    </text>
+  </g>
+</svg>

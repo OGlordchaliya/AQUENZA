@@ -40,6 +40,21 @@
   --shadow-lg: 0 16px 40px rgba(10, 37, 64, 0.12);
   --shadow-glow: 0 0 24px rgba(0, 180, 216, 0.35);
 
+  /* Semantic Variables (Light Theme Default) */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FBFE;
+  --bg-tertiary: #F1F5F9;
+  --card-bg: #FFFFFF;
+  --card-border: #E2E8F0;
+  --border-color: #E2E8F0;
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --input-bg: #FFFFFF;
+  --input-border: #CBD5E1;
+  --input-text: #0F172A;
+  --header-bg: rgba(255, 255, 255, 0.92);
+
   /* Transitions & Spacing */
   --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   --radius-sm: 8px;
@@ -47,6 +62,30 @@
   --radius-lg: 20px;
   --radius-full: 9999px;
   --container-max: 1200px;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0B132B;
+  --bg-secondary: #070D1F;
+  --bg-tertiary: #132247;
+  --card-bg: #111D3B;
+  --card-border: #1E305C;
+  --border-color: #1E305C;
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --input-bg: #0B132B;
+  --input-border: #2A437E;
+  --input-text: #F8FAFC;
+  --header-bg: rgba(11, 19, 43, 0.92);
+  --water-bg: #070D1F;
+  --gray-50: #0E1834;
+  --gray-100: #132247;
+  --gray-200: #1E305C;
+  --gray-700: #CBD5E1;
+  --gray-900: #F8FAFC;
+  --glass-bg: rgba(17, 29, 59, 0.88);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* CSS Reset & Base */
@@ -60,6 +99,9 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: 85px;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -70,6 +112,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 /* Typography Defaults */
@@ -315,5 +359,258 @@ ul {
   }
   .section {
     padding: 3.5rem 0;
+  }
+}
+
+/* ==========================================================================
+   Theme Switcher & Logo Adaptations
+   ========================================================================== */
+.theme-toggle-btn {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+  margin-right: 0.75rem;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--card-border);
+  transform: translateY(-1px);
+}
+
+.theme-icon-sun { display: none; }
+.theme-icon-moon { display: block; }
+
+[data-theme="dark"] .theme-icon-sun { display: block; color: #F59E0B; }
+[data-theme="dark"] .theme-icon-moon { display: none; }
+
+/* Responsive Logo Switching */
+.logo-light { display: inline-block; }
+.logo-dark { display: none; }
+
+[data-theme="dark"] .logo-light { display: none !important; }
+[data-theme="dark"] .logo-dark { display: inline-block !important; }
+
+/* Global Light/Dark Element Adaptations */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-glass {
+  background: var(--header-bg) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.catalogue-card, .service-card, .value-card, .feature-card, .step-card, .glass-card {
+  background: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+}
+
+.form-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color);
+}
+
+.form-control {
+  background: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--input-text) !important;
+}
+
+.text-dark { color: var(--text-primary) !important; }
+.text-muted { color: var(--text-muted) !important; }
+
+/* ==========================================================================
+   AQUENZA Interactive Lightbox System
+   ========================================================================== */
+.aqz-lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(7, 13, 31, 0.94);
+  backdrop-filter: blur(8px);
+  flex-direction: column;
+}
+
+.aqz-lightbox-overlay.active {
+  display: flex;
+}
+
+.aqz-lightbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(11, 19, 43, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  z-index: 10;
+}
+
+.aqz-lightbox-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.aqz-lightbox-counter {
+  font-size: 0.8rem;
+  color: #00B4D8;
+  font-weight: 600;
+  background: rgba(0, 180, 216, 0.15);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  margin-left: 8px;
+}
+
+.aqz-lightbox-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aqz-lightbox-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.aqz-lightbox-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #38BDF8;
+}
+
+.aqz-close-btn:hover {
+  background: #DC2626;
+  color: #FFFFFF;
+}
+
+.aqz-lightbox-viewport {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+.aqz-lightbox-canvas {
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aqz-lightbox-canvas img {
+  max-width: 88vw;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.1s ease-out;
+}
+
+.aqz-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.aqz-nav-arrow:hover {
+  background: #0052CC;
+}
+
+.aqz-prev { left: 1.5rem; }
+.aqz-next { right: 1.5rem; }
+
+.aqz-lightbox-footer {
+  padding: 0.85rem 1.5rem;
+  background: rgba(11, 19, 43, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  z-index: 10;
+}
+
+.aqz-lightbox-caption {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #CBD5E1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 580px) {
+  .aqz-lightbox-header {
+    padding: 0.65rem 0.85rem;
+  }
+  .aqz-lightbox-title {
+    font-size: 0.82rem;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .aqz-lightbox-counter {
+    font-size: 0.7rem;
+    padding: 1px 5px;
+    margin-left: 4px;
+  }
+  .aqz-lightbox-actions {
+    gap: 4px;
+  }
+  .aqz-lightbox-btn {
+    width: 32px;
+    height: 32px;
+  }
+  .aqz-nav-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+  }
+  .aqz-prev { left: 0.5rem; }
+  .aqz-next { right: 0.5rem; }
+  .aqz-lightbox-footer {
+    padding: 0.5rem 0.85rem;
+  }
+  .aqz-lightbox-caption {
+    font-size: 0.75rem;
+    line-height: 1.35;
   }
 }
