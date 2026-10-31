@@ -6,10 +6,29 @@
       "password_hash": "$2b$10$2PnJuxS1do2fZPPUt.U1k.59SkpxJaGIMHb6qqR.9gGBjwgVwiTUS",
       "role": "superadmin",
       "created_at": "2026-10-30T19:48:37.307Z",
-      "last_login": "2026-10-30T20:23:35.756Z"
+      "last_login": "2026-10-31T19:48:43.522Z"
     }
   ],
   "venues": [
+    {
+      "id": "venue-grand-heritage",
+      "slug": "the-grand-heritage",
+      "name": "The Grand Heritage",
+      "tagline": "Luxury Restaurant & Marriage Banquets",
+      "category": "Restaurant & Banquet",
+      "logo_url": "/assets/clean/aquenza_logo_clean.png",
+      "location": "Civil Lines, Bijnor, UP 246701",
+      "map_url": "https://maps.google.com/?q=Bijnor+Uttar+Pradesh",
+      "phone": "+91 86300 71125",
+      "email": "contact@grandheritagebijnor.com",
+      "destination_url": "/qr-venue-demo.html",
+      "opening_hours": "10:00 AM – 11:30 PM (All 7 Days)",
+      "announcement": "Special banquet & wedding packages available for upcoming season reservation!",
+      "status": "active",
+      "qr_code_url": "/api/qr/venue/the-grand-heritage.png",
+      "created_at": "2026-10-30T19:48:37.198Z",
+      "updated_at": "2026-10-31T19:25:07.864Z"
+    },
     {
       "id": "venue-royal-bistro",
       "slug": "the-royal-bistro",
@@ -19,8 +38,9 @@
       "logo_url": "/assets/clean/aquenza_logo_clean.png",
       "location": "Civil Lines, Near Circuit House, Bijnor, UP 246701",
       "map_url": "https://maps.google.com/?q=Bijnor+Uttar+Pradesh",
-      "phone": "+91 86300 71125",
+      "phone": "+91 87553 06639",
       "email": "contact@royalheritagebistro.com",
+      "destination_url": "",
       "opening_hours": "11:00 AM – 11:00 PM (All 7 Days)",
       "announcement": "Complimentary dessert on dining table reservations above ₹1500 this weekend!",
       "status": "active",
@@ -316,6 +336,38 @@
       "status": "new",
       "email_dispatched": false,
       "created_at": "2026-10-30T20:23:35.761Z"
+    },
+    {
+      "id": "enq-6utfzt7",
+      "reference_id": "AQZ-263998",
+      "name": "Arjun Sharma",
+      "phone": "9876543210",
+      "email": "arjun@heritagehaveli.com",
+      "bottle_size": "1 Litre Custom-Branded Bottle",
+      "quantity": "1,000 - 2,500 bottles",
+      "custom_branding": "Yes",
+      "qr_required": "No",
+      "message": "Require customized 1L bottles with our resort logo for 50 guest rooms in Bijnor.",
+      "status": "new",
+      "email_dispatched": false,
+      "created_at": "2026-10-31T19:46:15.690Z"
+    },
+    {
+      "id": "enq-ghvkkd4",
+      "reference_id": "AQZ-945608",
+      "name": "Vikram Chauhan",
+      "business": "Grand Bijnor Banquet & Resort",
+      "business_type": "Marriage Garden / Banquet",
+      "phone": "9876543210",
+      "email": "vikram@grandbijnor.com",
+      "bottle_size": "1 Litre Custom-Branded Bottle",
+      "quantity": "2,500+ bottles",
+      "custom_branding": "Yes",
+      "qr_required": "Yes",
+      "message": "Need custom labeled bottles with banquet QR for winter wedding season.",
+      "status": "new",
+      "email_dispatched": false,
+      "created_at": "2026-10-31T19:46:47.198Z"
     }
   ],
   "settings": {

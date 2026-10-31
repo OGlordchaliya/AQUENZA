@@ -1,3 +1,5 @@
+
+
 /**
  * AQUENZA — YOUR BRAND. OUR BOTTLE.
  * Interactive Enquiry Form Validation & Quote Handler
@@ -192,9 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
           Enquiry Registered Successfully (Ref: #${refId})
         </div>
         <p style="margin-bottom: 0.75rem; color: #1E293B;">
-          ${emailDispatched 
-            ? '<strong>Verified Email Dispatch:</strong> Your enquiry notification has been delivered directly to <strong>aquenza.service@gmail.com</strong>. Our team will review regional bottling schedules and contact you shortly.'
-            : '<strong>Database Logged:</strong> Your quotation request is recorded securely in the AQUENZA management system. For priority batch coordination, connect with our executives via WhatsApp below:'}
+          ${emailDispatched
+          ? '<strong>Verified Email Dispatch:</strong> Your enquiry notification has been delivered directly to <strong>aquenza.service@gmail.com</strong>. Our team will review regional bottling schedules and contact you shortly.'
+          : '<strong>Database Logged:</strong> Your quotation request is recorded securely in the AQUENZA management system. For priority batch coordination, connect with our executives via WhatsApp below:'}
         </p>
         <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem;">
           <a href="https://wa.me/918630071125?text=${waText}" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="background: #25D366; border-color: #25D366;">

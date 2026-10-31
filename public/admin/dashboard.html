@@ -300,7 +300,7 @@
         </button>
         <button class="nav-btn" data-tab="enquiriesTab">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          Customer Enquiries
+          Quote Requests / Enquiries
         </button>
         <button class="nav-btn" data-tab="emailTab">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
@@ -361,14 +361,14 @@
             <div class="stat-val" id="statReviews">0</div>
           </div>
           <div class="stat-card">
-            <div class="stat-title">Supply Enquiries</div>
+            <div class="stat-title">Quote Requests</div>
             <div class="stat-val" id="statEnquiries">0</div>
           </div>
         </div>
 
         <div class="panel-card">
           <div class="panel-header">
-            <h3 class="panel-title">Recent Website Enquiries</h3>
+            <h3 class="panel-title">Recent Customer Quote Requests</h3>
             <button class="btn btn-secondary" onclick="switchTab('enquiriesTab')">View All Enquiries →</button>
           </div>
           <div class="data-table-wrap">
@@ -376,16 +376,17 @@
               <thead>
                 <tr>
                   <th>Ref ID</th>
-                  <th>Client</th>
-                  <th>Phone</th>
-                  <th>Bottle Size</th>
-                  <th>Quantity</th>
+                  <th>Client &amp; Business</th>
+                  <th>Contact Details</th>
+                  <th>Size &amp; Quantity</th>
+                  <th>Branding / QR</th>
                   <th>Status</th>
                   <th>Date</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody id="recentEnquiriesBody">
-                <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Loading enquiries...</td></tr>
+                <tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Loading enquiries...</td></tr>
               </tbody>
             </table>
           </div>
@@ -406,6 +407,7 @@
                 <tr>
                   <th>Venue Name</th>
                   <th>Category</th>
+                  <th>Destination URL</th>
                   <th>Location</th>
                   <th>Phone</th>
                   <th>Status</th>
@@ -480,12 +482,15 @@
         </div>
       </section>
 
-      <!-- TAB 5: ENQUIRIES -->
+      <!-- TAB 5: ENQUIRIES & QUOTE REQUESTS -->
       <section id="enquiriesTab" class="tab-section">
         <div class="panel-card">
           <div class="panel-header">
-            <h3 class="panel-title">All Customer Supply Enquiries</h3>
-            <button class="btn btn-secondary" onclick="loadEnquiries()">Refresh</button>
+            <div>
+              <h3 class="panel-title" style="margin: 0;">Customer Quote Requests &amp; Enquiries</h3>
+              <p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted);">Real-time B2B quotes submitted via the website Request a Quote section.</p>
+            </div>
+            <button class="btn btn-secondary" onclick="loadEnquiries()">↻ Refresh List</button>
           </div>
 
           <div class="data-table-wrap">
@@ -493,18 +498,18 @@
               <thead>
                 <tr>
                   <th>Ref ID</th>
-                  <th>Client</th>
-                  <th>Phone</th>
-                  <th>Size</th>
-                  <th>Qty</th>
-                  <th>Custom Brand</th>
-                  <th>QR</th>
+                  <th>Client &amp; Business</th>
+                  <th>Contact Details</th>
+                  <th>Size &amp; Quantity</th>
+                  <th>Custom Brand / QR</th>
                   <th>Status</th>
                   <th>Date</th>
-                  <th>Action</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
-              <tbody id="enquiriesTableBody"></tbody>
+              <tbody id="enquiriesTableBody">
+                <tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Loading enquiries...</td></tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -592,6 +597,10 @@
           <input type="text" id="vSlug" class="form-input" required placeholder="e.g. grand-heritage-palace">
         </div>
         <div class="form-group">
+          <label class="form-label">Destination URL <span style="font-weight: normal; color: var(--text-muted);">(Optional - overrides default /qr/:slug)</span></label>
+          <input type="text" id="vDestinationUrl" class="form-input" placeholder="e.g. /qr-venue-demo.html or https://yourvenue.com (Leave blank to use default /qr/:slug)">
+        </div>
+        <div class="form-group">
           <label class="form-label">Category</label>
           <input type="text" id="vCategory" class="form-input" placeholder="e.g. Hotel & Marriage Garden">
         </div>
@@ -627,6 +636,71 @@
           <button type="submit" class="btn btn-primary">Save Venue</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Enquiry Detail Modal -->
+  <div id="enquiryDetailModal" class="admin-modal">
+    <div class="modal-box" style="max-width: 650px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.25rem;">
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Customer Quote Request</span>
+          <h3 style="margin: 0.25rem 0 0; color: var(--text-primary);" id="eqModalRefId">AQZ-000000</h3>
+        </div>
+        <span id="eqModalStatusBadge" class="badge badge-info">New</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Customer Name</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-top: 2px;" id="eqModalName">-</div>
+        </div>
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Business / Establishment</div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-top: 2px;" id="eqModalBusiness">-</div>
+        </div>
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Phone Number</div>
+          <div style="font-size: 1rem; margin-top: 2px;"><a id="eqModalPhoneLink" href="#" style="color: #0052CC; font-weight: 600; text-decoration: none;">-</a></div>
+        </div>
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Email Address</div>
+          <div style="font-size: 0.95rem; margin-top: 2px;"><a id="eqModalEmailLink" href="#" style="color: #0052CC; text-decoration: none;">-</a></div>
+        </div>
+      </div>
+
+      <div style="background: var(--bg-secondary); border-radius: 8px; padding: 1rem; margin-bottom: 1.25rem;">
+        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem;">Quotation Parameters</div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; font-size: 0.9rem;">
+          <div><span style="color: var(--text-muted);">Bottle Size:</span> <strong id="eqModalSize" style="color: var(--text-primary);">-</strong></div>
+          <div><span style="color: var(--text-muted);">Batch Quantity:</span> <strong id="eqModalQty" style="color: var(--text-primary);">-</strong></div>
+          <div><span style="color: var(--text-muted);">Custom Branding:</span> <strong id="eqModalBrand" style="color: var(--text-primary);">-</strong></div>
+          <div><span style="color: var(--text-muted);">Digital QR Gateway:</span> <strong id="eqModalQr" style="color: var(--text-primary);">-</strong></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.25rem;">
+        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 0.35rem;">Customer Notes &amp; Delivery Instructions</div>
+        <div id="eqModalNotes" style="background: var(--bg-secondary); border-radius: 6px; padding: 0.75rem; font-size: 0.9rem; color: var(--text-primary); min-height: 48px; white-space: pre-wrap;">-</div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 0.85rem; font-weight: 600;">Status:</span>
+          <select id="eqModalStatusSelect" style="padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.85rem;" onchange="updateModalEnquiryStatus(this.value)">
+            <option value="new">New</option>
+            <option value="contacted">Contacted</option>
+            <option value="quoted">Quoted</option>
+            <option value="closed">Closed</option>
+          </select>
+        </div>
+
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <a id="eqModalWhatsAppBtn" href="#" target="_blank" class="btn btn-secondary" style="color: #15803D; font-weight: 700;">WhatsApp</a>
+          <a id="eqModalCallBtn" href="#" class="btn btn-secondary" style="color: #0052CC; font-weight: 700;">Call Now</a>
+          <button type="button" class="btn btn-secondary" onclick="closeEnquiryModal()">Close</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -688,6 +762,8 @@
       }
     }
 
+    let venuesCache = [];
+
     async function loadVenues() {
       const res = await fetch('/api/admin/venues');
       const data = await res.json();
@@ -697,12 +773,15 @@
       select.innerHTML = '';
 
       if (data.venues) {
+        venuesCache = data.venues;
         data.venues.forEach(v => {
           select.innerHTML += `<option value="${v.id}">${v.name}</option>`;
+          const destUrl = v.destination_url || `/qr/${v.slug}`;
           tbody.innerHTML += `
             <tr>
               <td><strong>${v.name}</strong><br><small style="color:var(--text-muted);">/qr/${v.slug}</small></td>
               <td>${v.category || 'General'}</td>
+              <td><small style="color:var(--primary); font-family:monospace; word-break:break-all;">${destUrl}</small></td>
               <td>${v.location || '—'}</td>
               <td>${v.phone || '—'}</td>
               <td><span class="badge ${v.status === 'active' ? 'badge-success' : 'badge-warning'}">${v.status}</span></td>
@@ -712,7 +791,10 @@
                 </a>
               </td>
               <td>
-                <a href="/qr/${v.slug}" target="_blank" class="btn btn-secondary" style="font-size:0.75rem; padding:0.3rem 0.6rem;">View Live</a>
+                <div style="display:flex; gap:4px; flex-wrap:wrap;">
+                  <a href="${destUrl}" target="_blank" class="btn btn-secondary" style="font-size:0.75rem; padding:0.3rem 0.6rem;">View</a>
+                  <button type="button" class="btn btn-secondary" style="font-size:0.75rem; padding:0.3rem 0.6rem;" onclick="openEditVenueModal('${v.id}')">Edit</button>
+                </div>
               </td>
             </tr>
           `;
@@ -725,9 +807,30 @@
     function openAddVenueModal() {
       document.getElementById('venueForm').reset();
       document.getElementById('vId').value = '';
+      document.getElementById('vDestinationUrl').value = '';
       document.getElementById('venueModalTitle').textContent = 'Add Participating Business';
       document.getElementById('venueModal').classList.add('open');
     }
+
+    function openEditVenueModal(id) {
+      const v = venuesCache.find(item => item.id === id);
+      if (!v) return;
+      document.getElementById('venueForm').reset();
+      document.getElementById('vId').value = v.id;
+      document.getElementById('vName').value = v.name || '';
+      document.getElementById('vSlug').value = v.slug || '';
+      document.getElementById('vDestinationUrl').value = v.destination_url || '';
+      document.getElementById('vCategory').value = v.category || '';
+      document.getElementById('vLocation').value = v.location || '';
+      document.getElementById('vMap').value = v.map_url || '';
+      document.getElementById('vPhone').value = v.phone || '';
+      document.getElementById('vHours').value = v.opening_hours || '';
+      document.getElementById('vAnnouncement').value = v.announcement || '';
+      document.getElementById('vStatus').value = v.status || 'active';
+      document.getElementById('venueModalTitle').textContent = 'Edit Participating Business';
+      document.getElementById('venueModal').classList.add('open');
+    }
+
     function closeVenueModal() {
       document.getElementById('venueModal').classList.remove('open');
     }
@@ -735,8 +838,10 @@
     document.getElementById('venueForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const payload = {
+        id: document.getElementById('vId').value || undefined,
         name: document.getElementById('vName').value.trim(),
         slug: document.getElementById('vSlug').value.trim(),
+        destination_url: document.getElementById('vDestinationUrl').value.trim(),
         category: document.getElementById('vCategory').value.trim(),
         location: document.getElementById('vLocation').value.trim(),
         map_url: document.getElementById('vMap').value.trim(),
@@ -842,61 +947,132 @@
       loadStats();
     }
 
-    // Enquiries
+    // Enquiries & Quote Requests
+    let enquiriesCache = [];
+    let activeEnquiryId = null;
+
     async function loadEnquiries() {
       const res = await fetch('/api/admin/enquiries');
       const data = await res.json();
+      enquiriesCache = data.enquiries || [];
       const tbody = document.getElementById('enquiriesTableBody');
       const recentTbody = document.getElementById('recentEnquiriesBody');
       tbody.innerHTML = '';
       recentTbody.innerHTML = '';
 
-      if (data.enquiries && data.enquiries.length > 0) {
-        data.enquiries.forEach((e, idx) => {
+      if (enquiriesCache.length > 0) {
+        enquiriesCache.forEach((e, idx) => {
+          const businessText = e.business ? `${e.business} (${e.business_type || 'Standard'})` : (e.business_type || '—');
+          const emailText = e.email && e.email !== 'Not Provided' ? `<a href="mailto:${e.email}" style="color:var(--text-muted); font-size:0.8rem; text-decoration:none;">${e.email}</a>` : '<span style="color:var(--text-muted); font-size:0.8rem;">No email</span>';
+
           const rowHtml = `
             <tr>
-              <td><code style="font-weight:bold; color:#0052CC;">${e.reference_id}</code></td>
-              <td><strong>${e.name}</strong></td>
-              <td><a href="tel:${e.phone}" style="color:#0052CC; text-decoration:none;">${e.phone}</a></td>
-              <td>${e.bottle_size}</td>
-              <td>${e.quantity}</td>
-              <td>${e.custom_branding}</td>
-              <td>${e.qr_required}</td>
+              <td><code style="font-weight:bold; color:#0052CC; font-size:0.85rem;">${e.reference_id}</code></td>
               <td>
-                <select onchange="updateEnquiryStatus('${e.id}', this.value)" style="padding:2px 6px; font-size:0.8rem; border-radius:4px;">
+                <div style="font-weight:700; color:var(--text-primary);">${e.name}</div>
+                <div style="font-size:0.8rem; color:var(--text-muted);">${businessText}</div>
+              </td>
+              <td>
+                <div><a href="tel:${e.phone}" style="color:#0052CC; font-weight:600; text-decoration:none;">${e.phone}</a></div>
+                ${emailText}
+              </td>
+              <td>
+                <div style="font-weight:600; font-size:0.88rem;">${e.bottle_size}</div>
+                <div style="font-size:0.8rem; color:var(--text-muted);">${e.quantity}</div>
+              </td>
+              <td>
+                <div style="font-size:0.8rem;"><span style="color:var(--text-muted);">Brand:</span> <strong>${e.custom_branding}</strong></div>
+                <div style="font-size:0.8rem;"><span style="color:var(--text-muted);">QR:</span> <strong>${e.qr_required}</strong></div>
+              </td>
+              <td>
+                <select onchange="updateEnquiryStatus('${e.id}', this.value)" style="padding:3px 6px; font-size:0.8rem; border-radius:4px; font-weight:600; background:var(--bg-secondary); color:var(--text-primary); border:1px solid var(--border-color);">
                   <option value="new" ${e.status === 'new' ? 'selected' : ''}>New</option>
                   <option value="contacted" ${e.status === 'contacted' ? 'selected' : ''}>Contacted</option>
                   <option value="quoted" ${e.status === 'quoted' ? 'selected' : ''}>Quoted</option>
                   <option value="closed" ${e.status === 'closed' ? 'selected' : ''}>Closed</option>
                 </select>
               </td>
-              <td>${new Date(e.created_at).toLocaleDateString('en-IN')}</td>
+              <td style="font-size:0.85rem; color:var(--text-muted);">${new Date(e.created_at).toLocaleDateString('en-IN')}</td>
               <td>
-                <a href="https://wa.me/91${e.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(e.name)}%2C%20regarding%20your%20AQUENZA%20water%20enquiry%20(${e.reference_id})..." target="_blank" class="btn btn-secondary" style="font-size:0.75rem; padding:0.25rem 0.5rem; color:#15803D;">
-                  WhatsApp
-                </a>
+                <div style="display:flex; gap:4px; flex-wrap:wrap;">
+                  <button type="button" class="btn btn-secondary" style="font-size:0.75rem; padding:0.25rem 0.55rem;" onclick="openEnquiryModal('${e.id}')">Details</button>
+                  <a href="https://wa.me/91${e.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(e.name)}%2C%20regarding%20your%20AQUENZA%20water%20enquiry%20(${e.reference_id})..." target="_blank" class="btn btn-secondary" style="font-size:0.75rem; padding:0.25rem 0.55rem; color:#15803D;">WhatsApp</a>
+                </div>
               </td>
             </tr>
           `;
           tbody.innerHTML += rowHtml;
+
           if (idx < 5) {
             recentTbody.innerHTML += `
               <tr>
-                <td><code style="font-weight:bold; color:#0052CC;">${e.reference_id}</code></td>
-                <td><strong>${e.name}</strong></td>
-                <td>${e.phone}</td>
-                <td>${e.bottle_size}</td>
-                <td>${e.quantity}</td>
-                <td><span class="badge badge-info">${e.status}</span></td>
-                <td>${new Date(e.created_at).toLocaleDateString('en-IN')}</td>
+                <td><code style="font-weight:bold; color:#0052CC; font-size:0.85rem;">${e.reference_id}</code></td>
+                <td>
+                  <div style="font-weight:700;">${e.name}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">${businessText}</div>
+                </td>
+                <td><a href="tel:${e.phone}" style="color:#0052CC; font-weight:600; text-decoration:none;">${e.phone}</a></td>
+                <td>
+                  <div style="font-weight:600;">${e.bottle_size}</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">${e.quantity}</div>
+                </td>
+                <td>
+                  <div style="font-size:0.78rem;">Brand: ${e.custom_branding}</div>
+                  <div style="font-size:0.78rem;">QR: ${e.qr_required}</div>
+                </td>
+                <td><span class="badge ${e.status === 'new' ? 'badge-info' : (e.status === 'quoted' ? 'badge-success' : 'badge-warning')}">${e.status.toUpperCase()}</span></td>
+                <td style="font-size:0.85rem; color:var(--text-muted);">${new Date(e.created_at).toLocaleDateString('en-IN')}</td>
+                <td>
+                  <button type="button" class="btn btn-secondary" style="font-size:0.75rem; padding:0.25rem 0.55rem;" onclick="openEnquiryModal('${e.id}')">View</button>
+                </td>
               </tr>
             `;
           }
         });
       } else {
-        tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:var(--text-muted);">No enquiries submitted yet.</td></tr>';
-        recentTbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">No enquiries submitted yet.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; color:var(--text-muted); padding:2rem;">No customer quote requests submitted yet.</td></tr>';
+        recentTbody.innerHTML = '<tr><td colspan="8" style="text-align:center; color:var(--text-muted); padding:2rem;">No customer quote requests submitted yet.</td></tr>';
       }
+    }
+
+    function openEnquiryModal(id) {
+      const e = enquiriesCache.find(item => item.id === id);
+      if (!e) return;
+      activeEnquiryId = e.id;
+
+      document.getElementById('eqModalRefId').textContent = e.reference_id;
+      document.getElementById('eqModalName').textContent = e.name;
+      document.getElementById('eqModalBusiness').textContent = e.business ? `${e.business} (${e.business_type || 'Standard'})` : (e.business_type || 'Standard Hospitality');
+      document.getElementById('eqModalPhoneLink').textContent = e.phone;
+      document.getElementById('eqModalPhoneLink').href = `tel:${e.phone}`;
+      document.getElementById('eqModalEmailLink').textContent = e.email || 'Not Provided';
+      document.getElementById('eqModalEmailLink').href = e.email && e.email !== 'Not Provided' ? `mailto:${e.email}` : '#';
+
+      document.getElementById('eqModalSize').textContent = e.bottle_size;
+      document.getElementById('eqModalQty').textContent = e.quantity;
+      document.getElementById('eqModalBrand').textContent = e.custom_branding;
+      document.getElementById('eqModalQr').textContent = e.qr_required;
+      document.getElementById('eqModalNotes').textContent = e.message && e.message !== 'None' ? e.message : 'No additional notes provided by client.';
+
+      document.getElementById('eqModalStatusBadge').textContent = e.status.toUpperCase();
+      document.getElementById('eqModalStatusSelect').value = e.status;
+
+      const cleanPhone = e.phone.replace(/[^0-9]/g, '');
+      document.getElementById('eqModalWhatsAppBtn').href = `https://wa.me/91${cleanPhone}?text=Hello%20${encodeURIComponent(e.name)}%2C%20regarding%20your%20AQUENZA%20water%20enquiry%20(${e.reference_id})...`;
+      document.getElementById('eqModalCallBtn').href = `tel:${cleanPhone}`;
+
+      document.getElementById('enquiryDetailModal').classList.add('open');
+    }
+
+    function closeEnquiryModal() {
+      document.getElementById('enquiryDetailModal').classList.remove('open');
+      activeEnquiryId = null;
+    }
+
+    async function updateModalEnquiryStatus(status) {
+      if (!activeEnquiryId) return;
+      await updateEnquiryStatus(activeEnquiryId, status);
+      document.getElementById('eqModalStatusBadge').textContent = status.toUpperCase();
     }
 
     async function updateEnquiryStatus(id, status) {
@@ -906,6 +1082,7 @@
         body: JSON.stringify({ status })
       });
       loadEnquiries();
+      loadStats();
     }
 
     // SMTP Status

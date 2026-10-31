@@ -150,7 +150,8 @@ const server = http.createServer(async (req, res) => {
   if (pathname.startsWith('/api/qr/venue/') && pathname.endsWith('.png')) {
     try {
       const slug = pathname.replace('/api/qr/venue/', '').replace('.png', '');
-      const url = qrEngine.getVenueUrl(slug);
+      const venue = db.getVenueBySlug(slug);
+      const url = qrEngine.getVenueUrl(venue || slug);
       const buf = await qrEngine.generatePngBuffer(url, 600);
       res.writeHead(200, {
         'Content-Type': 'image/png',
@@ -331,6 +332,13 @@ const server = http.createServer(async (req, res) => {
     const venue = db.getVenueBySlug(slug);
 
     if (venue && venue.status === 'active') {
+      if (venue.destination_url && venue.destination_url.trim()) {
+        const dest = venue.destination_url.trim();
+        if (dest !== pathname && dest !== `/qr/${slug}`) {
+          res.writeHead(302, { 'Location': dest });
+          return res.end();
+        }
+      }
       const menu = db.getMenuByVenue(venue.id);
       const reviews = db.getReviews(venue.id, 'approved');
       const html = renderVenuePage(venue, menu, reviews, qrEngine.baseUrl);

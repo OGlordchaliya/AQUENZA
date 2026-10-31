@@ -7,7 +7,7 @@ function renderVenuePage(venue, menuCategoriesWithItems, reviews, baseUrl) {
     return s;
   };
 
-  const avgRating = reviews.length > 0 
+  const avgRating = reviews.length > 0
     ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1)
     : '5.0';
 

@@ -107,6 +107,10 @@ async function runTests() {
   assert('Homepage has AQUENZA logo', homeRes.bodyText.includes('aquenza_logo_horizontal.svg'));
   assert('Homepage has Theme Toggle', homeRes.bodyText.includes('themeToggleBtn'));
   assert('Homepage has 250ml category', homeRes.bodyText.includes('cat-250ml') && homeRes.bodyText.includes('bottle_mockup_250ml.png'));
+  assert('Homepage Category B has Grand Heritage', homeRes.bodyText.includes('The Grand Heritage') && homeRes.bodyText.includes('qr_customer_venue_demo.png'));
+  assert('Homepage Category B has Royal Heritage Bistro', homeRes.bodyText.includes('The Royal Heritage Bistro') && homeRes.bodyText.includes('qr_customer_venue_royal_bistro.png'));
+  assert('Homepage Request a Quote has Official Business Email', homeRes.bodyText.includes('aquenza.service@gmail.com') && homeRes.bodyText.includes('Email Us'));
+  assert('Homepage Enquiry Form has Business Mail field', homeRes.bodyText.includes('Business Mail / Email Address'));
 
   // 2. Catalogue
   const catRes = await request({ hostname: 'localhost', port: 3000, path: '/catalogue', method: 'GET' });
@@ -133,11 +137,18 @@ async function runTests() {
   const decodedComp = jsQR(decodePng(compQrImg.bodyBuf).data, 600, 600);
   assert('Company QR decodes to HTTPS public URL', decodedComp && decodedComp.data === 'https://aquenza.onrender.com/qr-company', `(Decoded: ${decodedComp?.data})`);
 
-  // 6. Category B Customer Venue QR Generator & Decoder Test
+  // 6. Category B Customer Venue QR Generators & Decoders Test
+  // 6a. Grand Heritage QR
+  const ghQrImg = await request({ hostname: 'localhost', port: 3000, path: '/api/qr/venue/the-grand-heritage.png', method: 'GET' });
+  assert('Grand Heritage QR Endpoint 200', ghQrImg.statusCode === 200 && ghQrImg.headers['content-type'] === 'image/png');
+  const decodedGh = jsQR(decodePng(ghQrImg.bodyBuf).data, 600, 600);
+  assert('Grand Heritage QR decodes to demo portal URL', decodedGh && decodedGh.data === 'https://aquenza.onrender.com/qr-venue-demo.html', `(Decoded: ${decodedGh?.data})`);
+
+  // 6b. Royal Bistro QR
   const venueQrImg = await request({ hostname: 'localhost', port: 3000, path: '/api/qr/venue/the-royal-bistro.png', method: 'GET' });
-  assert('Venue QR Endpoint 200', venueQrImg.statusCode === 200 && venueQrImg.headers['content-type'] === 'image/png');
+  assert('Royal Bistro QR Endpoint 200', venueQrImg.statusCode === 200 && venueQrImg.headers['content-type'] === 'image/png');
   const decodedVenue = jsQR(decodePng(venueQrImg.bodyBuf).data, 600, 600);
-  assert('Venue QR decodes to HTTPS venue URL', decodedVenue && decodedVenue.data === 'https://aquenza.onrender.com/qr/the-royal-bistro', `(Decoded: ${decodedVenue?.data})`);
+  assert('Royal Bistro QR decodes to HTTPS venue URL', decodedVenue && decodedVenue.data === 'https://aquenza.onrender.com/qr/the-royal-bistro', `(Decoded: ${decodedVenue?.data})`);
 
   // 7. Security: Unauthenticated access to /admin/dashboard
   const dashNoAuth = await request({ hostname: 'localhost', port: 3000, path: '/admin/dashboard', method: 'GET' });

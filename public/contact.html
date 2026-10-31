@@ -89,18 +89,14 @@
               </div>
               <a href="tel:8755306639" class="phone-btn-action">Call</a>
             </div>
-          </div>
 
-          <!-- Official Email Placeholder -->
-          <div class="email-placeholder-card">
-            <div style="font-size: 0.75rem; text-transform: uppercase; color: #F59E0B; font-weight: 700; margin-bottom: 0.25rem;">
-              Official Business Email
-            </div>
-            <div style="font-family: monospace; font-size: 0.9rem; color: #E2E8F0;">
-              [Contact Email: To Be Configured / Pending Setup]
-            </div>
-            <div style="font-size: 0.78rem; color: var(--gray-300); margin-top: 0.35rem;">
-              *Will be updated once official Gmail address is designated by business management.
+            <div class="phone-card email-card">
+              <div style="min-width: 0; flex: 1 1 auto;">
+                <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--cyan-accent); font-weight: 700;">Official Business Email</div>
+                <div class="phone-num" style="font-size: 1.05rem; word-break: break-all;">aquenza.service@gmail.com</div>
+                <div style="font-size: 0.75rem; color: var(--gray-300); margin-top: 0.2rem;">Direct bulk quotes & official communications</div>
+              </div>
+              <a href="mailto:aquenza.service@gmail.com" class="phone-btn-action" style="white-space: nowrap;">Email</a>
             </div>
           </div>
 
@@ -140,8 +136,9 @@
                 <div class="error-msg" id="phoneError"></div>
               </div>
               <div class="form-group">
-                <label for="emailAddress" class="form-label">Email Address <span class="optional">(Optional)</span></label>
+                <label for="emailAddress" class="form-label">Business Mail / Email Address <span class="optional">(Optional)</span></label>
                 <input type="email" id="emailAddress" name="emailAddress" class="form-input" placeholder="e.g. contact@yourvenue.com">
+                <div class="form-hint" style="font-size: 0.78rem; color: var(--gray-500); margin-top: 0.35rem;">Used for sending quotation copies & proofs</div>
               </div>
             </div>
 

@@ -610,14 +610,34 @@
             </div>
           </div>
 
-          <div class="qr-preview-box">
-            <img src="/assets/clean/qr_customer_venue_demo.png" alt="Scannable QR Code for Demo Venue" class="qr-display-img">
-            <div style="display: inline-block; background: #FEF3C7; color: #B45309; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.5rem;">DEMONSTRATION SAMPLE</div>
-            <h4 style="margin-bottom: 0.25rem;">The Grand Heritage (Demo)</h4>
-            <p style="font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem;">
-              Simulated restaurant & banquet demonstration page.
-            </p>
-            <a href="/qr-venue-demo.html" class="btn btn-secondary btn-sm" target="_blank">Explore Live Venue Demo</a>
+          <div class="qr-venues-grid">
+            <!-- Venue 1: The Grand Heritage (Demo) -->
+            <div class="qr-preview-box">
+              <img src="/assets/clean/qr_customer_venue_demo.png" alt="Scannable QR Code for Demo Venue - The Grand Heritage" class="qr-display-img">
+              <div style="display: inline-block; background: #FEF3C7; color: #B45309; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.5rem;">DEMONSTRATION SAMPLE</div>
+              <h4 style="margin-bottom: 0.25rem;">The Grand Heritage</h4>
+              <p style="font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem;">
+                Simulated restaurant & banquet demonstration page.
+              </p>
+              <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/qr-venue-demo.html" class="btn btn-secondary btn-sm" target="_blank">Explore Live Venue Demo</a>
+                <a href="/api/qr/venue/the-grand-heritage.png" download="aquenza_qr_grand_heritage.png" class="btn btn-outline btn-sm">Download QR</a>
+              </div>
+            </div>
+
+            <!-- Venue 2: The Royal Heritage Bistro (Active Client) -->
+            <div class="qr-preview-box">
+              <img src="/assets/clean/qr_customer_venue_royal_bistro.png" alt="Scannable QR Code for The Royal Heritage Bistro" class="qr-display-img">
+              <div style="display: inline-block; background: #E0F2FE; color: #0369A1; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.5rem;">ACTIVE VENUE DESTINATION</div>
+              <h4 style="margin-bottom: 0.25rem;">The Royal Heritage Bistro</h4>
+              <p style="font-size: 0.85rem; color: var(--gray-500); margin-bottom: 1rem;">
+                Boutique dining, rooftop café & hospitality portal.
+              </p>
+              <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/qr/the-royal-bistro" class="btn btn-secondary btn-sm" target="_blank">Explore Live Venue Demo</a>
+                <a href="/api/qr/venue/the-royal-bistro.png" download="aquenza_qr_royal_bistro.png" class="btn btn-outline btn-sm">Download QR</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -718,7 +738,7 @@
               Have questions about minimum order quantities, label proofs, or delivery timelines in Bijnor? Connect directly with our team.
             </p>
 
-            <!-- Phone Numbers (Strictly no personal names attached) -->
+            <!-- Contact Channels (Phone Desks & Official Business Email) -->
             <div class="contact-numbers-box">
               <div class="phone-card">
                 <div>
@@ -735,18 +755,14 @@
                 </div>
                 <a href="tel:8755306639" class="phone-btn-action">Call Now</a>
               </div>
-            </div>
 
-            <!-- Email Configuration Placeholder -->
-            <div class="email-placeholder-card">
-              <div style="font-size: 0.75rem; text-transform: uppercase; color: #F59E0B; font-weight: 700; margin-bottom: 0.25rem;">
-                Official Business Email
-              </div>
-              <div style="font-family: monospace; font-size: 0.9rem; color: #E2E8F0;">
-                [Contact Email: To Be Configured / Pending Setup]
-              </div>
-              <div style="font-size: 0.78rem; color: var(--gray-300); margin-top: 0.35rem;">
-                *Will be updated once official Gmail address is designated by management.
+              <div class="phone-card email-card">
+                <div style="min-width: 0; flex: 1 1 auto;">
+                  <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--cyan-accent); font-weight: 700;">Official Business Email</div>
+                  <div class="phone-num" style="font-size: 1.05rem; word-break: break-all;">aquenza.service@gmail.com</div>
+                  <div style="font-size: 0.75rem; color: var(--gray-300); margin-top: 0.2rem;">Direct bulk quotes & official communications</div>
+                </div>
+                <a href="mailto:aquenza.service@gmail.com" class="phone-btn-action" style="white-space: nowrap;">Email Us</a>
               </div>
             </div>
 
@@ -784,8 +800,9 @@
                   <div class="error-msg" id="phoneError"></div>
                 </div>
                 <div class="form-group">
-                  <label for="emailAddress" class="form-label">Email Address <span class="optional">(Optional)</span></label>
+                  <label for="emailAddress" class="form-label">Business Mail / Email Address <span class="optional">(Optional)</span></label>
                   <input type="email" id="emailAddress" name="emailAddress" class="form-input" placeholder="e.g. contact@yourvenue.com">
+                  <div class="form-hint" style="font-size: 0.78rem; color: var(--gray-500); margin-top: 0.35rem;">Used for sending quotation copies & proofs</div>
                 </div>
               </div>
 

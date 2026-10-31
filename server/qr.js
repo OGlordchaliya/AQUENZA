@@ -16,8 +16,33 @@ class QREngine {
     return `${this.baseUrl}/qr-company`;
   }
 
-  getVenueUrl(slug) {
+  getVenueUrl(venueOrSlug) {
     this.refresh();
+    let slug = '';
+    let customUrl = '';
+
+    if (typeof venueOrSlug === 'object' && venueOrSlug !== null) {
+      slug = venueOrSlug.slug || '';
+      customUrl = venueOrSlug.destination_url || '';
+    } else {
+      slug = String(venueOrSlug || '').toLowerCase().trim();
+      try {
+        const db = require('./db');
+        const v = db.getVenueBySlug(slug);
+        if (v && v.destination_url && v.destination_url.trim()) {
+          customUrl = v.destination_url.trim();
+        }
+      } catch (e) {}
+    }
+
+    if (customUrl && customUrl.trim()) {
+      const trimmed = customUrl.trim();
+      if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+        return trimmed;
+      }
+      return `${this.baseUrl}${trimmed.startsWith('/') ? '' : '/'}${trimmed}`;
+    }
+
     const cleanSlug = encodeURIComponent((slug || '').toLowerCase().trim());
     return `${this.baseUrl}/qr/${cleanSlug}`;
   }
@@ -65,17 +90,21 @@ class QREngine {
     const cleanDir = path.join(__dirname, '../public/assets/clean');
 
     const companyUrl = this.getCompanyUrl();
-    const venueUrl = this.getVenueUrl('the-royal-bistro');
+    const grandHeritageUrl = this.getVenueUrl('the-grand-heritage');
+    const royalBistroUrl = this.getVenueUrl('the-royal-bistro');
 
     const companyBuf = await this.generatePngBuffer(companyUrl, 600);
-    const venueBuf = await this.generatePngBuffer(venueUrl, 600);
+    const grandHeritageBuf = await this.generatePngBuffer(grandHeritageUrl, 600);
+    const royalBistroBuf = await this.generatePngBuffer(royalBistroUrl, 600);
 
     fs.writeFileSync(path.join(cleanDir, 'qr_aquenza_company.png'), companyBuf);
-    fs.writeFileSync(path.join(cleanDir, 'qr_customer_venue_demo.png'), venueBuf);
+    fs.writeFileSync(path.join(cleanDir, 'qr_customer_venue_demo.png'), grandHeritageBuf);
+    fs.writeFileSync(path.join(cleanDir, 'qr_customer_venue_royal_bistro.png'), royalBistroBuf);
 
     console.log(`[QREngine] Generated static QR assets:`);
-    console.log(`  - Company QR -> ${companyUrl} (${companyBuf.length} bytes)`);
-    console.log(`  - Venue QR   -> ${venueUrl} (${venueBuf.length} bytes)`);
+    console.log(`  - Company QR        -> ${companyUrl} (${companyBuf.length} bytes)`);
+    console.log(`  - Grand Heritage QR -> ${grandHeritageUrl} (${grandHeritageBuf.length} bytes)`);
+    console.log(`  - Royal Bistro QR   -> ${royalBistroUrl} (${royalBistroBuf.length} bytes)`);
   }
 }
 
